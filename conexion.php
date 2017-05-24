@@ -1,3 +1,3 @@
 <?php
-$conexion = new mysqli("localhost", "root", "master", "coffee_sound");
+$conexion = new mysqli("localhost", "root", "master", "coffe_sound");
 ?>
