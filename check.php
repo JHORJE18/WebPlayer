@@ -1,12 +1,16 @@
 <?php
-$dbuser="root";
-$dbpass="master";
-$dbname="coffee_sound";
-$chandle = mysql_connect("localhost", $dbuser, $dbpass) or die("Error conectando a la BBDD");
-echo "Conectado correctamente";
+$mysqli = new mysqli("localhost", "root", "master", "coffee_sound");
 
-mysql_select_db($dbname, $chandle) or die ($dbname . " Base de datos no encontrada." . $dbuser);
-echo "Base de datos " . $database . " seleccionada";
-mysql_close($chandle);
+/* Comprueba la conexión */
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
 
+if (!$mysqli->query("SET a=1")) {
+    printf("Errormessage: %s\n", $mysqli->error);
+}
+
+/* Cierra la conexión */
+$mysqli->close();
 ?>
