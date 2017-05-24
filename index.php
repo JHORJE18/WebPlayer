@@ -22,7 +22,7 @@
 			  $enlace = $song[7];
 			  
 			  //Obtener artista
-			  $sqlArtista = "SELECT * FROM `usuarios` WHERE ID = '$song[1]'";
+			  $sqlArtista = "SELECT * FROM `usuario` WHERE ID = '$song[1]'";
 			  echo $sqlArtista;
 			  $resultArtista =$conexion->query($sqlArtista);
 			  if ($resultArtista){
@@ -33,7 +33,7 @@
 			  }
 
 			  //Obtener artista
-			  $sqlAlbum = "SELECT * FROM `usuarios` WHERE `ID-ALBUM` = '$song[2]'";
+			  $sqlAlbum = "SELECT * FROM `album` WHERE `ID-ALBUM` = '$song[2]'";
 			  echo $sqlAlbum;
 			  $resultAlbum =$conexion->query($sqlAlbum);
 			  if ($resultAlbum){
