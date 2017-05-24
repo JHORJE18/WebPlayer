@@ -22,10 +22,13 @@
 
 		  $sql = "SELECT * FROM `cancion`";
 		  echo $sql;
-		  if ($resultado = $conexion->query($sql)){
+			$result= $conexion -> query($sql);
+		  if ($result){
 			  echo 'Se ha consultado <br>';
 			  $fila = $resultado->fetch_array();
 			  echo $fila[0];
+		  } else {
+			  echo 'Error al conectar loco';
 		  }
 
 		  //Descargar cancion
