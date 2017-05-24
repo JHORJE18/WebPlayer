@@ -112,8 +112,11 @@
 			</div>
 			<br>
 			<div class="mdl-cell--12-col">
-					<a href="http://music.jhorje18.com/index.php?enlace=<?php echo $enlace ?>&artista=<?php echo $artista ?>&foto=<?php echo $foto ?>&descarga=song" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-cell--6-col" style="background-color:greenyellow" <?php if($enlace) {echo 'disable'} ?>>
+			<?php 
+				if ($enlace){	?>
+					<a href="http://music.jhorje18.com/index.php?enlace=<?php echo $enlace ?>&artista=<?php echo $artista ?>&foto=<?php echo $foto ?>&descarga=song" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-cell--6-col" style="background-color:greenyellow">
 					<i class="material-icons">music_note</i> Descargar</a>
+				<?php } ?>
 
 					<a href="http://music.jhorje18.com/index.php?enlace=<?php echo $enlace ?>&artista=<?php echo $artista ?>&foto=<?php echo $foto ?>&descarga=app" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-cell--6-col" style="background-color:aqua">
 					<i class="material-icons">file_download</i> Aplicación</a>
