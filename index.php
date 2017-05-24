@@ -29,7 +29,6 @@
 			  echo $fila[0];
 		  } else {
 			  echo 'Error al conectar loco';
-			  echo $result;
 		  }
 
 		  //Descargar cancion
