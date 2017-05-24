@@ -23,7 +23,6 @@
 			  
 			  //Obtener artista
 			  $sqlArtista = "SELECT * FROM `usuario` WHERE ID = '$song[1]'";
-			  echo $sqlArtista;
 			  $resultArtista =$conexion->query($sqlArtista);
 			  if ($resultArtista){
 				  $autor= $resultArtista->fetch_array();
@@ -34,7 +33,6 @@
 
 			  //Obtener artista
 			  $sqlAlbum = "SELECT * FROM `album` WHERE `ID-ALBUM` = '$song[2]'";
-			  echo $sqlAlbum;
 			  $resultAlbum =$conexion->query($sqlAlbum);
 			  if ($resultAlbum){
 				  $album= $resultAlbum->fetch_array();
