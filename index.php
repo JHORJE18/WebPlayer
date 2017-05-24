@@ -19,13 +19,13 @@
 			  $song = $result->fetch_array();
 
 			  //Asignacion valores
-			  $titulo = $fila[4];
+			  $titulo = $song[4];
 			  echo '<br> Titulo='.$titulo;
-			  $enlace = $fila[7];
+			  $enlace = $song[7];
 			  echo '<br> Enlace='.$enlace;
 			  
 			  //Obtener artista
-			  $sqlArtista = "SELECT * FROM `usuarios` WHERE ID = '$fila[1]'";
+			  $sqlArtista = "SELECT * FROM `usuarios` WHERE ID = '$song[1]'";
 			  $resultArtista =$conexion->query($sqlArtista);
 			  if ($resultArtista){
 				  $autor= $resultArtista->fetch_array();
@@ -35,7 +35,7 @@
 			  }
 
 			  //Obtener artista
-			  $sqlAlbum = "SELECT * FROM `usuarios` WHERE `ID-ALBUM` = '$fila[2]'";
+			  $sqlAlbum = "SELECT * FROM `usuarios` WHERE `ID-ALBUM` = '$song[2]'";
 			  $resultAlbum =$conexion->query($sqlAlbum);
 			  if ($resultAlbum){
 				  $album= $resultAlbum->fetch_array();
