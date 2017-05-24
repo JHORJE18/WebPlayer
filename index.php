@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Sound Coffee</title>
   <?php 
+
+  //Incluimos datos conex con BBDD
+  include 'conexion.php';
+
   		if(isset($_GET['enlace'])){
 			  $enlace = $_GET['enlace'];
 		  }
@@ -14,6 +18,12 @@
 
 		  if (isset($_GET['foto'])){
 			  $foto = $_GET['foto'];
+		  }
+
+		  $sql = "SELECT * FROM `cancion`";
+		  if ($resultado = $conexion->query($sql)){
+			  $fila = $resultado->fetch_array();
+			  echo $fila[4];
 		  }
 
 		  //Descargar cancion
