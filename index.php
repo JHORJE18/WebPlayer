@@ -21,9 +21,11 @@
 		  }
 
 		  $sql = "SELECT * FROM `cancion`";
+		  echo $sql;
 		  if ($resultado = $conexion->query($sql)){
+			  echo 'Se ha consultado <br>';
 			  $fila = $resultado->fetch_array();
-			  echo $fila[4];
+			  echo $fila[0];
 		  }
 
 		  //Descargar cancion
