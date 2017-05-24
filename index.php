@@ -21,8 +21,8 @@
 		  }
 
 		  $sql = "SELECT * FROM `cancion`";
-		  echo $sql;
-			$result= $conexion -> query($sql);
+		  echo $sql.'   '.$conexion;
+		  $result= $conexion -> query($sql);
 		  if ($result){
 			  echo 'Se ha consultado <br>';
 			  $fila = $resultado->fetch_array();

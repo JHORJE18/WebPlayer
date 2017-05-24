@@ -1,5 +1,4 @@
 <?php
-
 $dbuser="root";
 $dbpass="master";
 $dbname="coffee_sound";
