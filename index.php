@@ -21,11 +21,10 @@
 		  }
 
 		  $sql = "SELECT * FROM `cancion`";
-		  echo $sql.'   ';
 		  $result= $conexion -> query($sql);
 		  if ($result){
 			  echo 'Se ha consultado <br>';
-			  $fila = $resultado->fetch_array();
+			  $fila = $result->fetch_array();
 			  echo $fila[0];
 		  } else {
 			  echo 'Error al conectar loco';
