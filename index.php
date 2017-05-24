@@ -34,7 +34,7 @@
 
 			  //Obtener artista
 			  $sqlAlbum = "SELECT * FROM `usuarios` WHERE `ID-ALBUM` = '$song[2]'";
-			  echo $sqlAlbum
+			  echo $sqlAlbum;
 			  $resultAlbum =$conexion->query($sqlAlbum);
 			  if ($resultAlbum){
 				  $album= $resultAlbum->fetch_array();
