@@ -8,24 +8,40 @@
   //Incluimos datos conex con BBDD
   include 'conexion.php';
 
-  		if(isset($_GET['enlace'])){
-			  $enlace = $_GET['enlace'];
+  		if(isset($_GET['id'])){
+			  $id = $_GET['id'];
 		  }
 
-		  if(isset($_GET['artista'])){
-			  $artista = $_GET['artista'];
-		  }
-
-		  if (isset($_GET['foto'])){
-			  $foto = $_GET['foto'];
-		  }
-
-		  $sql = "SELECT * FROM `cancion`";
+		  $sql = "SELECT * FROM `cancion` WHERE ID = '$id'";
 		  $result= $conexion -> query($sql);
 		  if ($result){
-			  echo 'Se ha consultado <br>';
-			  $fila = $result->fetch_array();
-			  echo $fila[0];
+			  $song = $result->fetch_array();
+
+			  //Asignacion valores
+			  $titulo = $fila[4];
+			  $enlace = $fila[7];
+			  
+			  //Obtener artista
+			  $sqlArtista = "SELECT * FROM `usuarios` WHERE ID = '$fila[1]'";
+			  $resultArtista =$conexion->query($sqlArtista);
+			  if ($resultArtista){
+				  $autor= $resultArtista->fetch_array();
+				  $artista = $autor[1];
+			  } else {
+				  $artista = "Desconocido";
+			  }
+
+			  //Obtener artista
+			  $sqlAlbum = "SELECT * FROM `usuarios` WHERE `ID-ALBUM` = '$fila[2]'";
+			  $resultAlbum =$conexion->query($sqlAlbum);
+			  if ($resultAlbum){
+				  $album= $resultAlbum->fetch_array();
+				  $foto = $album[5];
+			  } else {
+				  $artista = "Desconocido";
+			  }
+
+
 		  } else {
 			  echo 'Error al conectar loco';
 		  }
@@ -129,7 +145,7 @@ function secondsTimeSpanToHMS(s) {
 songs = [{
 		//Recibe parametros de la cancion a reproducir
 		src: "MUSICA/<?php echo $enlace ?>",
-		title: "<?php echo $enlace ?>",
+		title: "<?php echo $titulo ?>",
 		artist: "<?php echo $artista ?>",
 		coverart: "<?php echo $foto ?>"
 	}
