@@ -21,7 +21,7 @@
 		  }
 
 		  $sql = "SELECT * FROM `cancion`";
-		  echo $sql.'   '.$conexion;
+		  echo $sql.'   ';
 		  $result= $conexion -> query($sql);
 		  if ($result){
 			  echo 'Se ha consultado <br>';
