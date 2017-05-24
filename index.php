@@ -9,59 +9,61 @@
   include 'conexion.php';
 
   		if(isset($_GET['id'])){
-			  $id = $_GET['id'];
-		  }
+				$id = $_GET['id'];
 
-		  $sql = "SELECT * FROM `cancion` WHERE ID = '$id'";
-		  $result= $conexion -> query($sql);
-		  if ($result){
-			  $song = $result->fetch_array();
+			$sql = "SELECT * FROM `cancion` WHERE ID = '$id'";
+			$result= $conexion -> query($sql);
+			if ($result){
+				$song = $result->fetch_array();
 
-			  //Asignacion valores
-			  $titulo = $song[4];
-			  $enlace = $song[7];
-			  
-			  //Obtener artista
-			  $sqlArtista = "SELECT * FROM `usuario` WHERE ID = '$song[1]'";
-			  $resultArtista =$conexion->query($sqlArtista);
-			  if ($resultArtista){
-				  $autor= $resultArtista->fetch_array();
-				  $artista = $autor[1];
-			  } else {
-				  $artista = "Desconocido";
-			  }
+				//Asignacion valores
+				$titulo = $song[4];
+				$enlace = $song[7];
+				
+				//Obtener artista
+				$sqlArtista = "SELECT * FROM `usuario` WHERE ID = '$song[1]'";
+				$resultArtista =$conexion->query($sqlArtista);
+				if ($resultArtista){
+					$autor= $resultArtista->fetch_array();
+					$artista = $autor[1];
+				} else {
+					$artista = "Desconocido";
+				}
 
-			  //Obtener artista
-			  $sqlAlbum = "SELECT * FROM `album` WHERE `ID-ALBUM` = '$song[2]'";
-			  $resultAlbum =$conexion->query($sqlAlbum);
-			  if ($resultAlbum){
-				  $album= $resultAlbum->fetch_array();
-				  $foto = $album[5];
-			  } else {
-				  $artista = "Desconocido";
-			  }
+				//Obtener artista
+				$sqlAlbum = "SELECT * FROM `album` WHERE `ID-ALBUM` = '$song[2]'";
+				$resultAlbum =$conexion->query($sqlAlbum);
+				if ($resultAlbum){
+					$album= $resultAlbum->fetch_array();
+					$foto = $album[5];
+				} else {
+					$artista = "Desconocido";
+				}
 
 
+			} else {
+				echo 'Error al conectar loco';
+			}
+
+			//Descargar cancion
+			if ($_GET['descarga'] != null){
+
+				//Descarga Cancion
+				if ($_GET['descarga'] == "song" && $_GET['enlace'] != null){
+					header("Content-disposition: attachment; filename=".$enlace);
+					header("Content-type: audio/mpeg");
+					readfile($enlace);
+				}
+
+				//Descarga App
+				if ($_GET['descarga'] == "app"){
+					header("Content-disposition: attachment; filename=".$enlace);
+					header("Content-type: application/zip");
+					readfile("/App");
+				}
+			}
 		  } else {
-			  echo 'Error al conectar loco';
-		  }
-
-		  //Descargar cancion
-		  if ($_GET['descarga'] != null){
-
-			//Descarga Cancion
-			if ($_GET['descarga'] == "song" && $_GET['enlace'] != null){
-				header("Content-disposition: attachment; filename=".$enlace);
-				header("Content-type: audio/mpeg");
-				readfile($enlace);
-			}
-
-			//Descarga App
-			if ($_GET['descarga'] == "app"){
-				header("Content-disposition: attachment; filename=".$enlace);
-				header("Content-type: application/zip");
-				readfile("/App");
-			}
+			  $titulo = 'No se ha recibido el identificador de la cancion a reproducir';
 		  }
 
   ?>
